@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import random_array from "./scripts/utils/random_array";
+import bubble_sort from "./scripts/bubble_sort";
+
+import BarVisualizer from "./components/BarVisualizer/BarVisualizer";
 
 function App() {
+  const [array, setArray] = useState(random_array(25, 1337));
+  const [visualizerID, setVisualizerID] = useState(0);
+
+  function sort() {
+    setArray(bubble_sort(array));
+    setVisualizerID(visualizerID + 1);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <BarVisualizer key={visualizerID} array={array} />
+      <button onClick={sort}>sort</button>
     </div>
   );
 }
