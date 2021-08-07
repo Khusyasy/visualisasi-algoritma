@@ -18,7 +18,7 @@ function App() {
 
   return (
     <div>
-      <BarVisualizer array={values} status={statuses} />
+      <BarVisualizer values={values} statuses={statuses} />
       <button onClick={sort}>sort</button>
     </div>
   );

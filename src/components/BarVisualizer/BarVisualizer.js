@@ -1,15 +1,15 @@
 import Bar from "./Bar";
 
-
-function BarVisualizer({ array, statuses }) {
+function BarVisualizer({ values, statuses }) {
 
   return (
     <div className="bar-container">
-      {array.map((bar, i) => (
+      {values.map((bar, i) => (
         <Bar
           key={i}
           value={bar}
-          maxValue={Math.max(...array)}
+          maxValue={Math.max(...values)}
+          status={statuses[i]}
         />
       ))}
     </div>

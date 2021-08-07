@@ -16,7 +16,7 @@
   background: rgba(0, 0, 0, 0.4);
 }
 
-.bar.highlight {
+.bar.focus {
   background: rgba(119, 119, 119, 0.4);
 }
 
