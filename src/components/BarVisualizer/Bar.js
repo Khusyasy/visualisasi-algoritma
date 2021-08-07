@@ -1,11 +1,11 @@
 import cx from "classnames";
 
-function Bar({ value, maxValue, status }) {
+function Bar({ value, status }) {
 
   return (
     <div
       className={cx("bar",{ [status]: status })}
-      style={{ "--value": value, "--max-value": maxValue }}
+      style={{ "--value": value }}
     >
       {value}
     </div>

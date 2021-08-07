@@ -1,8 +1,16 @@
+* {
+  box-sizing: border-box;
+}
+
 .bar-container {
   display: flex;
   flex-direction: row;
   align-items: flex-end;
   height: 500px;
+  width: 100%;
+  background: #fafafa;
+  border: solid 1px #575757;
+  padding-top: 1%;
 }
 
 .bar {
@@ -10,16 +18,18 @@
   flex-direction: row;
   align-items: flex-end;
   justify-content: center;
-  width: 2rem;
+  width: calc(100% / var(--length) - calc(10% / var(--length) * 2));
   height: calc(100% / var(--max-value) * var(--value));
-  margin: 0 0.5rem;
-  background: rgba(0, 0, 0, 0.4);
+  margin: 0 calc(10% / var(--length));
+  font-size: 1vw;
+  background: #9c9c9c;
+  color: #fafafa;
 }
 
 .bar.focus {
-  background: rgba(119, 119, 119, 0.4);
+  background: #b9c6c3;
 }
 
 .bar.swap {
-  background: rgba(0, 218, 141, 0.4);
+  background: #11d4b4;
 }
