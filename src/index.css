@@ -13,5 +13,13 @@
   width: 2rem;
   height: calc(100% / var(--max-value) * var(--value));
   margin: 0 0.5rem;
-  background: rgba(0, 0, 0, 0.205);
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.bar.highlight {
+  background: rgba(119, 119, 119, 0.4);
+}
+
+.bar.swap {
+  background: rgba(0, 218, 141, 0.4);
 }

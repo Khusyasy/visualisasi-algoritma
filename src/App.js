@@ -4,18 +4,46 @@ import bubble_sort from "./scripts/bubble_sort";
 
 import BarVisualizer from "./components/BarVisualizer/BarVisualizer";
 
+class RenderController {
+  constructor(delayInMs, arrayCallback, highlightCallback, swapCallback) {
+    this.delayInMs = delayInMs;
+    this.arrayCallback = arrayCallback;
+    this.highlightCallback = highlightCallback;
+    this.highlight = [];
+    this.swapCallback = swapCallback;
+    this.swap = [];
+  }
+  render(arr) {
+    this.arrayCallback([...arr]);
+    this.highlightCallback(this.highlight);
+    this.swapCallback(this.swap);
+    this.highlight = [];
+    this.swap = [];
+  }
+  async delay() {
+    await new Promise(resolve => setTimeout(resolve, this.delayInMs));
+  }
+  setHighlight(value) {
+    this.highlight[value] = true;
+  }
+  setSwap(value) {
+    this.swap[value] = true;
+  }
+}
+
 function App() {
   const [array, setArray] = useState(random_array(25, 1337));
-  const [visualizerID, setVisualizerID] = useState(0);
+  const [highlight, setHighlight] = useState([]);
+  const [swap, setSwap] = useState([]);
+  let RC = new RenderController(500, setArray, setHighlight, setSwap);
 
   function sort() {
-    setArray(bubble_sort(array));
-    setVisualizerID(visualizerID + 1);
+    bubble_sort(array, RC);
   }
 
   return (
     <div>
-      <BarVisualizer key={visualizerID} array={array} />
+      <BarVisualizer array={array} highlight={highlight} swap={swap} />
       <button onClick={sort}>sort</button>
     </div>
   );
