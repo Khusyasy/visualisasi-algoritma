@@ -6,18 +6,19 @@ import SortingController from "./scripts/sorting/SortingController";
 import BarVisualizer from "./components/BarVisualizer/BarVisualizer";
 
 function App() {
-  const [array, setArray] = useState(random_array(25, 1337));
-  const [highlight, setHighlight] = useState([]);
-  const [swap, setSwap] = useState([]);
-  let RC = new SortingController(500, setArray, setHighlight, setSwap);
+  const [values, setValues] = useState(random_array(25, 1337));
+  const [statuses, setStatuses] = useState([]);
+  let RC = new SortingController(500, setValues, setStatuses);
+
+  console.log(values, statuses);
 
   function sort() {
-    bubble_sort(array, RC);
+    bubble_sort(values, RC);
   }
 
   return (
     <div>
-      <BarVisualizer array={array} highlight={highlight} swap={swap} />
+      <BarVisualizer array={values} status={statuses} />
       <button onClick={sort}>sort</button>
     </div>
   );

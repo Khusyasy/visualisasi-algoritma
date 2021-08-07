@@ -1,27 +1,20 @@
 class SortingController {
-  constructor(delayInMs, arrayCallback, highlightCallback, swapCallback) {
+  constructor(delayInMs, arrayCallback, statusCallback) {
     this.delayInMs = delayInMs;
     this.arrayCallback = arrayCallback;
-    this.highlightCallback = highlightCallback;
-    this.highlight = [];
-    this.swapCallback = swapCallback;
-    this.swap = [];
+    this.statusCallback = statusCallback;
+    this.statuses = [];
   }
   render(arr) {
     this.arrayCallback([...arr]);
-    this.highlightCallback(this.highlight);
-    this.swapCallback(this.swap);
-    this.highlight = [];
-    this.swap = [];
+    this.statusCallback(this.statuses);
+    this.statuses = [];
   }
   async delay() {
     await new Promise(resolve => setTimeout(resolve, this.delayInMs));
   }
-  setHighlight(value) {
-    this.highlight[value] = true;
-  }
-  setSwap(value) {
-    this.swap[value] = true;
+  setStatus(index, value) {
+    this.statuses[index] = value;
   }
 }
 

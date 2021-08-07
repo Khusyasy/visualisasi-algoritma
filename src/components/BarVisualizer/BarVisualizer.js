@@ -1,7 +1,7 @@
 import Bar from "./Bar";
 
 
-function BarVisualizer({ array, highlight, swap }) {
+function BarVisualizer({ array, statuses }) {
 
   return (
     <div className="bar-container">
@@ -10,8 +10,6 @@ function BarVisualizer({ array, highlight, swap }) {
           key={i}
           value={bar}
           maxValue={Math.max(...array)}
-          highlight={highlight[i]}
-          swap={swap[i]}
         />
       ))}
     </div>

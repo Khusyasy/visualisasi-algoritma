@@ -5,19 +5,20 @@ async function bubble_sort(inputArr, RC) {
   do {
     checked = false;
     for (let i = 0; i < len; i++) {
-      RC.setHighlight(i);
-      RC.setHighlight(i + 1);
+      RC.setStatus(i, "focus");
+      RC.setStatus(i + 1, "focus");
       RC.render(arr);
       await RC.delay();
       if (arr[i] > arr[i + 1]) {
         [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
-        RC.setSwap(i);
-        RC.setSwap(i + 1);
+        RC.setStatus(i, "swap");
+        RC.setStatus(i + 1, "swap");
         RC.render(arr);
         await RC.delay();
         checked = true;
       }
     }
+    RC.render(arr);
   } while (checked);
   return arr;
 }
