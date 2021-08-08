@@ -30,6 +30,10 @@
   background: #b9c6c3;
 }
 
+.bar.select {
+  background: hsl(66, 61%, 75%);
+}
+
 .bar.swap {
-  background: #11d4b4;
+  background: hsl(170, 85%, 45%);
 }

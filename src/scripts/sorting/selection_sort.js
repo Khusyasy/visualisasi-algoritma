@@ -8,14 +8,14 @@ async function selection_sort(inputArr, RC) {
     RC.render(arr);
     await RC.delay();
     for (let j = i; j < len; j++) {
-      RC.setStatus(i, "focus");
-      RC.setStatus(j, "focus");
-      if(minIndex !== i) RC.setStatus(minIndex, "swap");
-      RC.render(arr);
-      await RC.delay();
       if (arr[minIndex] > arr[j]) {
         minIndex = j;
       }
+      RC.setStatus(i, "focus");
+      RC.setStatus(j, "focus");
+      if(minIndex !== i) RC.setStatus(minIndex, "select");
+      RC.render(arr);
+      await RC.delay();
     }
     if (i !== minIndex) {
       [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
@@ -25,6 +25,7 @@ async function selection_sort(inputArr, RC) {
       await RC.delay();
     }
     RC.render(arr);
+    await RC.delay();
   }
   return arr;
 }
