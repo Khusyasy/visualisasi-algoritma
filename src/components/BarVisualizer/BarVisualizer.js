@@ -1,9 +1,11 @@
+import FlipMove from "react-flip-move";
+
 import Bar from "./Bar";
 
 function BarVisualizer({ values, statuses }) {
 
   return (
-    <div
+    <FlipMove
       className="bar-container" 
       style={{
         "--max-value": Math.max(...values),
@@ -12,12 +14,12 @@ function BarVisualizer({ values, statuses }) {
     >
       {values.map((bar, i) => (
         <Bar
-          key={i}
+          key={bar}
           value={bar}
           status={statuses[i]}
         />
       ))}
-    </div>
+    </FlipMove>
   );
 }
 
