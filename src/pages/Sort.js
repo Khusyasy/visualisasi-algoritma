@@ -8,22 +8,21 @@ import BarVisualizer from "../components/BarVisualizer/BarVisualizer";
 
 function Sort() {
   const [values, setValues] = useState(random_array(10, 123));
-  const [statuses, setStatuses] = useState([]);
-  let RC = new SortingController(250, setValues, setStatuses);
+  let SC = new SortingController(250, values, setValues);
 
   const [algo, setAlgo] = useState("bubble");
 
   function sort() {
     if(algo === "bubble") {
-      bubble_sort(values, RC);
+      bubble_sort(SC);
     }else if(algo === "selection") {
-      selection_sort(values, RC);
+      selection_sort(SC);
     }
   }
 
   return (
     <div>
-      <BarVisualizer values={values} statuses={statuses} />
+      <BarVisualizer values={values} />
       <div className="controls">
         <button onClick={sort}>sort</button>
         <select name="algo" id="algo" value={algo} onChange={(e)=>setAlgo(e.target.value)}>

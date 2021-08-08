@@ -2,21 +2,21 @@ import FlipMove from "react-flip-move";
 
 import Bar from "./Bar";
 
-function BarVisualizer({ values, statuses }) {
+function BarVisualizer({ values }) {
 
   return (
     <FlipMove
       className="bar-container" 
       style={{
-        "--max-value": Math.max(...values),
+        "--max-value": values.reduce((a,b)=>Math.max(a,b.value), 0),
         "--length": values.length,
       }}
     >
-      {values.map((bar, i) => (
+      {values.map(bar => (
         <Bar
-          key={bar}
-          value={bar}
-          status={statuses[i]}
+          key={bar.id}
+          value={bar.value}
+          status={bar.status}
         />
       ))}
     </FlipMove>
